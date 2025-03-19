@@ -1,45 +1,46 @@
 {
 	"info": {
-		"_postman_id": "817dda8e-a1b0-46b3-be38-4555b3b6cf96",
-		"name": "API Testing",
+		"_postman_id": "1012a736-e20a-4854-97df-725c886198d1",
+		"name": "API1 testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "16825267",
-		"_collection_link": "https://interstellar-crater-618961.postman.co/workspace/CNATS-CG~a3acd8c5-ec7f-4a9b-a078-eac553f7091d/collection/16825267-817dda8e-a1b0-46b3-be38-4555b3b6cf96?action=share&source=collection_link&creator=16825267"
+		"_exporter_id": "26657602",
+		"_collection_link": "https://dark-space-26100.postman.co/workspace/API-Testing~414a96eb-8917-4c0e-8a07-751665563bba/collection/26657602-1012a736-e20a-4854-97df-725c886198d1?action=share&source=collection_link&creator=26657602"
 	},
 	"item": [
 		{
-			"name": "GET Req",
+			"name": "Get request",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Response Status Code.",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
 							"\r",
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});\r",
+							"pm.response.to.have.status(200);\r",
 							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"free\");\r",
-							"});\r",
-							"pm.test(\"Check JSON Data\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.id).to.eql(12);\r",
-							"});\r",
-							"pm.test(\"Check last name \", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.data.last_name).to.eql(\"Howell\");\r",
-							"});\r",
-							"pm.test(\"Check url \", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.support.url).contains(\"support-heading\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -48,62 +49,11 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://reqres.in/api/users?id=7",
-					"protocol": "https",
-					"host": [
-						"reqres",
-						"in"
-					],
-					"path": [
-						"api",
-						"users"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "7"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Req",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Successful POST request\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
-							"});\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"email\": \"smitha@test.in\",\r\n        \"first_name\": \"Smitha\",\r\n        \"last_name\": \"Menon\"\r\n    }\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "https://reqres.in/api/users",
 					"protocol": "https",
@@ -120,21 +70,15 @@
 			"response": []
 		},
 		{
-			"name": "PUT",
+			"name": "Check JSON Values.",
 			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"data\": {        \r\n    \"id\": 5,\r\n    \"email\": \"smitha@test.in\",\r\n    \"first_name\": \"Test\",\r\n    \"last_name\": \"Name\"\r\n}\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+				"auth": {
+					"type": "noauth"
 				},
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users/5",
+					"raw": "https://reqres.in/api/users/12",
 					"protocol": "https",
 					"host": [
 						"reqres",
@@ -143,28 +87,41 @@
 					"path": [
 						"api",
 						"users",
-						"5"
+						"12"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "\r\n{        \r\n    \"id\": 5\r\n}\r\n\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
+			"name": "Full Body Match.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp = '{\"data\":{\"id\":2,\"email\":\"janet.weaver@reqres.in\",\"first_name\":\"Janet\",\"last_name\":\"Weaver\",\"avatar\":\"https://reqres.in/img/faces/2-image.jpg\"},\"support\":{\"url\":\"https://reqres.in/#support-heading\",\"text\":\"To keep ReqRes free, contributions towards server costs are appreciated!\"}}';\r",
+							"\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"\r",
+							"pm.response.to.have.body(resp);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
 				},
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "https://reqres.in/api/users",
+					"raw": "https://reqres.in/api/users/2",
 					"protocol": "https",
 					"host": [
 						"reqres",
@@ -172,58 +129,8 @@
 					],
 					"path": [
 						"api",
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Lambda",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"profession\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://lw0qsqpnfl.execute-api.ap-southeast-2.amazonaws.com/cnats/cnatsapi_resource?first_name=Smitha&last_name=Menon",
-					"protocol": "https",
-					"host": [
-						"lw0qsqpnfl",
-						"execute-api",
-						"ap-southeast-2",
-						"amazonaws",
-						"com"
-					],
-					"path": [
-						"cnats",
-						"cnatsapi_resource"
-					],
-					"query": [
-						{
-							"key": "first_name",
-							"value": "Smitha"
-						},
-						{
-							"key": "last_name",
-							"value": "Menon"
-						}
+						"users",
+						"2"
 					]
 				}
 			},
